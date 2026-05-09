@@ -1,9 +1,10 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ZonaParque {
     private String nombre;
-    private List<Atraccion> atracciones; //2da colección
+    private List<Atraccion> atracciones;
 
     public ZonaParque(String nombre) {
         this.nombre = nombre;
@@ -11,10 +12,14 @@ public class ZonaParque {
     }
 
     public String getNombre() { return nombre; }
-    public List<Atraccion> getAtracciones() { return atracciones; }
+    
+    public List<Atraccion> getAtracciones() { 
+        return Collections.unmodifiableList(atracciones); 
+    }
 
-    //Sobrecarga
-    public void agregarAtraccion(Atraccion a) { atracciones.add(a); }
+    public void agregarAtraccion(Atraccion a) { 
+        atracciones.add(a); 
+    }
     
     public void agregarAtraccion(String nombre, int cap) {
         atracciones.add(new Atraccion(nombre, cap, true));

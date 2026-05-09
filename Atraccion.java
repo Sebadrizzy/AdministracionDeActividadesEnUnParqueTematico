@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Atraccion {
     private String nombre;
     private int capacidad;
@@ -9,7 +11,6 @@ public class Atraccion {
         this.operativa = operativa;
     }
 
-    //Encapsulamiento
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
     public int getCapacidad() { return capacidad; }
@@ -17,8 +18,16 @@ public class Atraccion {
     public boolean isOperativa() { return operativa; }
     public void setOperativa(boolean operativa) { this.operativa = operativa; }
 
-    @Override //Sobreescritura
+    @Override 
     public String toString() {
-        return nombre + " (Capacidad: " + capacidad + ")";
+        return nombre + " (Cap: " + capacidad + " | Operativa: " + operativa + ")";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Atraccion atraccion = (Atraccion) obj;
+        return Objects.equals(nombre.toLowerCase(), atraccion.nombre.toLowerCase());
     }
 }
